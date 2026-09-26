@@ -10,6 +10,10 @@
 #include <cassert>
 #include <cstdlib>
 
+#ifdef NDEBUG
+#define ASSERT(_a_) ((void)(_a_))
+#else
 #define ASSERT(_a_) assert(_a_)
+#endif
 #define DEBUG_ASSERT(_a_) assert(_a_)
 #define UNREACHABLE() std::abort()
