@@ -5,12 +5,13 @@
 
 #include "dynarmic/ir/location_descriptor.h"
 
-#include <fmt/format.h>
+#include <print>
+#include <format>
 
 namespace Dynarmic::IR {
 
 std::string ToString(const LocationDescriptor& descriptor) {
-    return fmt::format("{{{:016x}}}", descriptor.Value());
+    return std::format("{{{:016x}}}", descriptor.Value());
 }
 
 }  // namespace Dynarmic::IR

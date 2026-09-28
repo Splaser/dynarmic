@@ -8,8 +8,8 @@
 
 #include "dynarmic/backend/x64/a64_emit_x64.h"
 
-#include <fmt/format.h>
-#include <fmt/ostream.h>
+#include <print>
+#include <format>
 #include "dynarmic/common/assert.h"
 #include "dynarmic/common/common_types.h"
 #include "dynarmic/ir/terminal.h"
@@ -612,7 +612,7 @@ void A64EmitX64::EmitA64SetTPIDR(A64EmitContext& ctx, IR::Inst* inst) {
 
 std::string A64EmitX64::LocationDescriptorToFriendlyName(const IR::LocationDescriptor& ir_descriptor) const {
     const A64::LocationDescriptor descriptor{ir_descriptor};
-    return fmt::format("a64_{:016X}_fpcr{:08X}",
+    return std::format("a64_{:016X}_fpcr{:08X}",
                        descriptor.PC(),
                        descriptor.FPCR().Value());
 }

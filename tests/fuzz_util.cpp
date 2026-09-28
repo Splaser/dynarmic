@@ -10,8 +10,8 @@
 
 #include <cstring>
 
-#include <fmt/format.h>
-#include <fmt/ostream.h>
+#include <print>
+#include <format>
 #include "dynarmic/common/assert.h"
 
 #include "dynarmic/tests/rand_int.h"
@@ -21,7 +21,7 @@
 using namespace Dynarmic;
 
 std::ostream& operator<<(std::ostream& o, Vector vec) {
-    return o << fmt::format("{:016x}'{:016x}", vec[1], vec[0]);
+    return o << std::format("{:016x}'{:016x}", vec[1], vec[0]);
 }
 
 Vector RandomVector() {

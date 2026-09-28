@@ -8,7 +8,8 @@
 
 #include "dynarmic/common/fp/op/FPToFixed.h"
 
-#include <fmt/format.h>
+#include <print>
+#include <format>
 #include "dynarmic/common/assert.h"
 #include "dynarmic/mcl/bit.hpp"
 #include "dynarmic/common/common_types.h"

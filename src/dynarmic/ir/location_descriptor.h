@@ -11,7 +11,8 @@
 #include <functional>
 #include <string>
 
-#include <fmt/format.h>
+#include <print>
+#include <format>
 #include "dynarmic/common/common_types.h"
 
 namespace Dynarmic::IR {
@@ -59,7 +60,7 @@ struct hash<Dynarmic::IR::LocationDescriptor> {
 }  // namespace std
 
 template<>
-struct fmt::formatter<Dynarmic::IR::LocationDescriptor> : fmt::formatter<std::string> {
+struct std::formatter<Dynarmic::IR::LocationDescriptor> : std::formatter<std::string> {
     template<typename FormatContext>
     auto format(Dynarmic::IR::LocationDescriptor descriptor, FormatContext& ctx) const {
         return formatter<std::string>::format(ToString(descriptor), ctx);

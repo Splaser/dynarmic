@@ -11,7 +11,6 @@
 #include <numeric>
 #include <utility>
 
-#include <fmt/ostream.h>
 #include "dynarmic/backend/x64/hostloc.h"
 #include "dynarmic/common/assert.h"
 #include <bit>

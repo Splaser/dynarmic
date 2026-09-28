@@ -11,7 +11,8 @@
 #include <mutex>
 
 #include <boost/icl/interval_set.hpp>
-#include <fmt/format.h>
+#include <print>
+#include <format>
 #include "dynarmic/common/assert.h"
 #include <bit>
 #include "dynarmic/common/common_types.h"

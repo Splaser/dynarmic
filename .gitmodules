@@ -4,9 +4,6 @@
 [submodule "catch"]
 	path = externals/catch
 	url = https://github.com/catchorg/Catch2.git
-[submodule "fmt"]
-	path = externals/fmt
-	url = https://github.com/fmtlib/fmt.git
 [submodule "oaknut"]
 	path = externals/oaknut
 	url = https://github.com/merryhime/oaknut.git
