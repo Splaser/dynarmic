@@ -8,14 +8,7 @@
 
 #ifdef DYNARMIC_XBYAK_CUSTOM_CONTAINERS
 
-// The embedder is expected to provide its own Common::X64 ABI helpers
-// (RegToIndex, ABI_RETURN, CallFarFunction, etc.) at this path when it
-// defines this flag -- see backend/x64/xbyak.h for what the flag means.
-// Dynarmic doesn't also define its own copy on this branch: two
-// non-identical definitions of the same Common::X64 symbols in one binary
-// is an ODR violation independent of the container-type question. This is
-// the only filename on the embedder's side dynarmic needs to know; how it's
-// implemented past this one include is the embedder's business.
+// use top level xbyak api
 #include "common/x64/dynarmic_xbyak_abi.h"
 
 #else
