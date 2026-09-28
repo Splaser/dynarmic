@@ -3,8 +3,6 @@
 
 #pragma once
 
-#include "common/container_hash.h"
-
 #include <boost/unordered/unordered_flat_set.hpp>
 
 namespace Common {

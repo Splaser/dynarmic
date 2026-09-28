@@ -15,14 +15,12 @@ endif()
 # Dynarmic project options
 option(DYNARMIC_ENABLE_CPU_FEATURE_DETECTION "Turning this off causes dynarmic to assume the host CPU doesn't support anything later than SSE3" ON)
 option(DYNARMIC_ENABLE_NO_EXECUTE_SUPPORT "Enables support for systems that require W^X" OFF)
-option(DYNARMIC_FATAL_ERRORS "Errors are fatal" OFF)
 option(DYNARMIC_IGNORE_ASSERTS "Ignore asserts" OFF)
 option(DYNARMIC_TESTS "Build tests" ${BUILD_TESTING})
 option(DYNARMIC_TESTS_USE_UNICORN "Enable fuzzing tests against unicorn" OFF)
 option(DYNARMIC_USE_LLVM "Support disassembly of jitted x86_64 code using LLVM" OFF)
 option(DYNARMIC_USE_PRECOMPILED_HEADERS "Use precompiled headers" ON)
 option(DYNARMIC_USE_BUNDLED_EXTERNALS "Use all bundled externals (useful when e.g. cross-compiling)" OFF)
-option(DYNARMIC_WARNINGS_AS_ERRORS "Warnings as errors" ${MASTER_PROJECT})
 if (NOT DEFINED DYNARMIC_FRONTENDS)
     set(DYNARMIC_FRONTENDS "A32;A64" CACHE STRING "Selects which frontends to enable")
 endif()
@@ -34,7 +32,7 @@ if (NOT CMAKE_BUILD_TYPE)
 endif()
 
 # Set hard requirements for C++
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
@@ -75,11 +73,6 @@ if (MSVC)
         /bigobj             # Increase number of sections in .obj files
         /DNOMINMAX)
 
-    if (DYNARMIC_WARNINGS_AS_ERRORS)
-        list(APPEND DYNARMIC_CXX_FLAGS
-             /WX)
-    endif()
-
     if (${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
         list(APPEND DYNARMIC_CXX_FLAGS
              -Qunused-arguments
@@ -92,17 +85,6 @@ else()
         -Wcast-qual
         -pedantic
         -Wno-missing-braces)
-
-    if (DYNARMIC_WARNINGS_AS_ERRORS)
-        list(APPEND DYNARMIC_CXX_FLAGS
-             -pedantic-errors
-             -Werror)
-    endif()
-
-    if (DYNARMIC_FATAL_ERRORS)
-        list(APPEND DYNARMIC_CXX_FLAGS
-             -Wfatal-errors)
-    endif()
 
     if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
         # GCC produces bogus -Warray-bounds warnings from xbyak headers for code paths that are not

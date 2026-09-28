@@ -29,6 +29,7 @@
 #endif
 
 // You must ensure this matches with src/common/x64/xbyak.h on root dir
+#include "dynarmic/common/common_types.h"
 #include "dynarmic/common/container/unordered_map.h"
 #include "dynarmic/common/container/unordered_set.h"
 #include <boost/unordered_map.hpp>
