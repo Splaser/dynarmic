@@ -3,12 +3,12 @@
 
 #pragma once
 
-#include <boost/container_hash/hash.hpp>
+#include "dynarmic/common/container/default_hash.h"
 #include <boost/unordered/unordered_flat_set.hpp>
 
 namespace Common {
 
-template <class Key, class Hash = boost::hash<Key>, class Pred = std::equal_to<Key>,
+template <class Key, class Hash = Dynarmic::detail::DefaultHash<Key>, class Pred = std::equal_to<Key>,
           class Allocator = std::allocator<Key>>
 using unordered_set = boost::unordered::unordered_flat_set<Key, Hash, Pred, Allocator>;
 

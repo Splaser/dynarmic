@@ -134,3 +134,10 @@ target_compile_options(dynarmic_tests PRIVATE ${DYNARMIC_CXX_FLAGS})
 target_compile_definitions(dynarmic_tests PRIVATE FMT_USE_USER_DEFINED_LITERALS=1)
 
 add_test(NAME dynarmic_tests COMMAND dynarmic_tests --durations yes)
+
+# Standalone regression coverage for descriptor and tuple/pair container keys.
+add_executable(dynarmic_container_hash_smoke container_hash_smoke.cpp)
+target_include_directories(dynarmic_container_hash_smoke PRIVATE ../src)
+target_compile_features(dynarmic_container_hash_smoke PRIVATE cxx_std_23)
+target_link_libraries(dynarmic_container_hash_smoke PRIVATE Boost::headers)
+add_test(NAME dynarmic_container_hash_smoke COMMAND dynarmic_container_hash_smoke)
