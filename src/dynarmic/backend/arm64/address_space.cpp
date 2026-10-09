@@ -7,6 +7,7 @@
  */
 
 #include <cstdio>
+#include <print>
 
 #include <bit>
 

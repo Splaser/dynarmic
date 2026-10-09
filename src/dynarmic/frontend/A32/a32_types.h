@@ -163,10 +163,4 @@ struct std::formatter<Dynarmic::A32::CoprocReg> : std::formatter<const char*> {
     }
 };
 
-template<>
-struct std::formatter<Dynarmic::A32::RegList> : std::formatter<std::string> {
-    template<typename FormatContext>
-    auto format(Dynarmic::A32::RegList reg_list, FormatContext& ctx) const {
-        return formatter<std::string>::format(Dynarmic::A32::RegListToString(reg_list), ctx);
-    }
-};
+// RegList aliases u16; use RegListToString when register names are needed.
